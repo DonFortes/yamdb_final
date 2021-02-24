@@ -1,2 +1,37 @@
-# yamdb_final
-yamdb_final
+# Project Title
+
+The YaMDb project collects user reviews of works (Title). The works are divided into categories: "Books", "Movies", "Music". In each category there are works: books, movies or music. Grateful or outraged readers leave text reviews for the works and give the work a rating (rating in the range from one to ten). From the set of ratings, the average score of the product is automatically calculated.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Installing
+
+1. Clone a repository
+git clone https://github.com/DonFortes/infra_sp2
+
+2. Launching the app
+docker-compose up
+
+3. Make migrations
+docker-compose exec web python manage.py migrate
+
+4. Copy static data
+docker-compose exec web python manage.py collectstatic --noinput
+
+5. Filling the database with initial data
+docker-compose exec web python manage.py loaddata fixtures.json 
+
+
+Access to the admin panel
+http://localhost:8000/admin
+
+
+List of works
+http://localhost:8000/api/v1/titles/
+
+
+<!-- NOT AVAILABLE YET -->
+<!-- API documentation is available at -->
+<!-- http://localhost:8000/redoc/ -->

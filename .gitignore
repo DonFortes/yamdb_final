@@ -3,6 +3,8 @@ env/
 venv/
 .venv
 .venv/
+docker.log
+.env
 
 __pycache__/
 *.py[cod]
@@ -16,7 +18,13 @@ __pycache__/
 *.sublime-project
 *.sublime-workspace
 
-static/
+
 posts/static/
 
 db.sqlite3
+
+media/
+
+db.sqlite3
+sent_emails
+zДекомпозиция.txt
