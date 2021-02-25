@@ -1,3 +1,5 @@
+
+
 # Project Title
 
 The YaMDb project collects user reviews of works (Title). The works are divided into categories: "Books", "Movies", "Music". In each category there are works: books, movies or music. Grateful or outraged readers leave text reviews for the works and give the work a rating (rating in the range from one to ten). From the set of ratings, the average score of the product is automatically calculated.
@@ -32,6 +34,10 @@ List of works
 http://localhost:8000/api/v1/titles/
 
 
-<!-- NOT AVAILABLE YET -->
-<!-- API documentation is available at -->
-<!-- http://localhost:8000/redoc/ -->
+API documentation is available at
+http://localhost:8000/
+
+
+https://github.com/DonFortes/yamdb_final/workflows/yamdb_workflow/badge.svg
+
+![example workflow](https://github.com/DonFortes/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
