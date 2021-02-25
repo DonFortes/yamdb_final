@@ -112,7 +112,6 @@ jobs:
           sudo docker stop $(sudo docker ps -a -q)
           docker kill $(docker ps -q)
           docker rm $(docker ps -a -q)
-        # sudo docker run --rm -d -p 5000:5000 azeron/yamdb:latest
           sudo docker-compose up --force-recreate --build
 
   send_message:
