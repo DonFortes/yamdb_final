@@ -56,7 +56,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
-        source: "./docker-compose.yaml"
+        source: "docker-compose.yaml"
         target: "./code/"
     # копируем entrypoint.sh
     - name: copy entrypoint.sh file to remote
