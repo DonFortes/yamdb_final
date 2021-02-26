@@ -68,8 +68,11 @@ jobs:
             export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
             export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
             sudo touch .env
-          
+            sudo docker stop $(sudo docker ps -a -q)
+            sudo docker rm $(sudo docker ps -a -q)
             sudo docker pull azeron/yamdb:latest
+            sudo kill `sudo lsof -t -i:8000`
+            sudo kill `sudo lsof -t -i:80`
             sudo docker-compose up --build
 
           # sudo docker stop $(sudo docker ps -a -q)
