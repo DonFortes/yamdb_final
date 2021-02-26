@@ -70,7 +70,7 @@ jobs:
             sudo docker rm $(sudo docker ps -a -q)
             sudo docker pull azeron/yamdb:latest
             sudo touch .env
-            sudo docker-compose build
+            sudo docker-compose up
          
 
       # - name: executing remote ssh commands to set env
