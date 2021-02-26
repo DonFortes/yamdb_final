@@ -67,7 +67,7 @@ jobs:
             export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
             export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
             sudo touch .env
-            sudo service nginx reload
+            sudo service nginx start
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
             sudo docker pull azeron/yamdb:latest
