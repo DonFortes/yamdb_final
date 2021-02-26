@@ -69,7 +69,6 @@ jobs:
             export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
             export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
             sudo docker pull azeron/yamdb:latest
-            sudo docker stop $(sudo docker ps -a -q)
             sudo touch .env
             sudo docker-compose up --force-recreate --build
 
