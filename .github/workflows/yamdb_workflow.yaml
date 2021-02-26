@@ -70,9 +70,10 @@ jobs:
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
             sudo docker pull azeron/yamdb:latest
+            sudo kill `sudo lsof -t -i:8000`
             sudo docker-compose up
 
-            
+
       # - name: executing remote ssh commands to set env
       #   uses: appleboy/ssh-action@master
       #   with:
