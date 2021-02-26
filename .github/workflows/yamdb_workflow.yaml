@@ -56,8 +56,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo apt-get update
-            sudo service nginx stop
             sudo docker pull azeron/yamdb:latest
             sudo touch .env
             sudo docker-compose up --force-recreate --build
