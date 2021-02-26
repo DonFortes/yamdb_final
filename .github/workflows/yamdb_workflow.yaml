@@ -69,9 +69,9 @@ jobs:
             export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
             sudo docker pull azeron/yamdb:latest
             sudo docker stop $(sudo docker ps -a -q)
+            sudo touch .env
             sudo docker-compose up --force-recreate --build
 
-    
       # - name: executing remote ssh commands to set env
       #   uses: appleboy/ssh-action@master
       #   with:
