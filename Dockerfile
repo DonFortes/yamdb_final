@@ -6,7 +6,9 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT sudo["/code/entrypoint.sh"]
+CMD sudo python manage.py makemigrations, sudo python manage.py migrate, sudo python manage.py collectstatic  --noinput
+
+# ENTRYPOINT sudo["/code/entrypoint.sh"]
 
 # CMD gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
 
