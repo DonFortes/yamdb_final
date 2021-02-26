@@ -57,6 +57,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo apt-get update
+            sudo systemctl restart docker
             sudo docker rm -f $(sudo docker ps -a -q)
             export DB_ENGINE=${{ secrets.DB_ENGINE }}
             export DB_NAME=${{ secrets.DB_NAME }}
