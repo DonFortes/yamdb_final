@@ -58,10 +58,22 @@ jobs:
           script: |
             sudo apt-get update
             sudo service nginx stop
-            sudo docker rm -f $(sudo docker ps -a -q)
+            sudo docker rm -f
+            sudo docker ps -a -q
             sudo docker pull azeron/yamdb:latest
             sudo touch .env
             sudo docker-compose up --force-recreate --build
+
+          # export DB_ENGINE=${{ secrets.DB_ENGINE }}
+          # export DB_NAME=${{ secrets.DB_NAME }}
+          # export POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+          # export POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+          # export DB_HOST=${{ secrets.DB_HOST }}
+          # export DB_PORT=${{ secrets.DB_PORT }}
+          # export SECRET_KEY=${{ secrets.SECRET_KEY }}
+          # export DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
+          # export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
+          # export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
 
       # - name: executing remote ssh commands to set env
       #   uses: appleboy/ssh-action@master
