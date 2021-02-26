@@ -72,7 +72,6 @@ jobs:
             sudo docker rm $(sudo docker ps -a -q)
             sudo kill `sudo lsof -t -i:80`
             sudo kill `sudo lsof -t -i:8000`
-            sudo systemctl restart gunicorn
             sudo docker pull azeron/yamdb:latest
             sudo docker-compose up --build
 
