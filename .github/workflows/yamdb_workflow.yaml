@@ -69,7 +69,6 @@ jobs:
             sudo touch .env
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
-            sudo kill `sudo lsof -t -i:8000`
             sudo docker pull azeron/yamdb:latest
             sudo docker-compose down
             sudo docker-compose up
