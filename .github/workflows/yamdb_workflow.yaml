@@ -57,6 +57,8 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo apt-get update
+            sudo docker stop $(sudo docker ps -a -q)
+            docker rm -f $(docker ps -a -q)
             export DB_ENGINE=${{ secrets.DB_ENGINE }}
             export DB_NAME=${{ secrets.DB_NAME }}
             export POSTGRES_USER=${{ secrets.POSTGRES_USER }}
