@@ -57,8 +57,6 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo apt-get update
-            sudo systemctl restart docker
-            sudo docker rm -f $(sudo docker ps -a -q)
             export DB_ENGINE=${{ secrets.DB_ENGINE }}
             export DB_NAME=${{ secrets.DB_NAME }}
             export POSTGRES_USER=${{ secrets.POSTGRES_USER }}
@@ -69,6 +67,7 @@ jobs:
             export DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }}
             export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
             export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
+            sudo docker rm -f $(sudo docker ps -a -q)
             sudo docker pull azeron/yamdb:latest
             sudo touch .env
             sudo docker-compose up --force-recreate --build
