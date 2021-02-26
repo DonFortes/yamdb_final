@@ -6,7 +6,7 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-CMD python manage.py makemigrations, python manage.py migrate, python manage.py collectstatic  --noinput
+# CMD python manage.py makemigrations, python manage.py migrate, python manage.py collectstatic  --noinput
 
 # ENTRYPOINT sudo["/code/entrypoint.sh"]
 
