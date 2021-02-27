@@ -2,12 +2,18 @@ FROM python:3.8.5
 
 WORKDIR /code
 
-COPY . .
+COPY requirements.txt /code
 
-RUN pip install -r requirements.txt
+RUN python -m pip install --upgrade pip && \
+    pip install -r /code/requirements.txt
 
-CMD python manage.py makemigrations, python manage.py migrate, python manage.py collectstatic  --noinput
+COPY . /code
 
-# ENTRYPOINT sudo["/code/entrypoint.sh"]
+ENTRYPOINT sudo["/code/entrypoint.sh"]
 
-# CMD gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+# зачем мы делаем copy дважды? почему нельзя скопировать все выше
+# а затем установить requirements
+
+
+# CMD python manage.py makemigrations, python manage.py migrate, python manage.py collectstatic  --noinput
+

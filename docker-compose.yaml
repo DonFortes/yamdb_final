@@ -15,12 +15,9 @@ services:
       - ./.env
   web:
     container_name: web
-    # build: .
     image: azeron/yamdb:latest
     restart: always
     command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
-    ports:
-      - "127.0.0.1:8001:8000"
     depends_on:
       - db
     env_file:
@@ -38,6 +35,6 @@ services:
       - media:/code/media
     restart: always
     ports:
-      - "80:80"
+      - "8000:80"
     depends_on:
       - web
