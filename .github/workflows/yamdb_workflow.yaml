@@ -49,26 +49,26 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
-      # копируем docker-compose.yaml, entrypoint.sh
-      - name: copy docker-compose.yaml file to remote
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          source: "./docker-compose.yaml"
-          target: "home/azeron/code"
-      # копируем conf
-      - name: copy conf directory to remote
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
-          source: "conf*"
-          target: "code/conf/"
+      # # копируем docker-compose.yaml, entrypoint.sh
+      # - name: copy docker-compose.yaml file to remote
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USER }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     passphrase: ${{ secrets.PASSPHRASE }}
+      #     source: "code/docker-compose.yaml"
+      #     target: "home/azeron/code"
+      # # копируем conf
+      # - name: copy conf directory to remote
+      #   uses: appleboy/scp-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USER }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     passphrase: ${{ secrets.PASSPHRASE }}
+      #     source: "code/conf*"
+      #     target: "code/conf/"
       - name: ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -77,6 +77,15 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
+            id=$(docker create ${{ secrets.DOCKER_USERNAME }}/yamdb:latest)
+            sudo docker cp $id:code/docker-compose.yaml docker-compose.yaml
+            sudo mkdir conf
+
+            sudo docker cp $id:code/conf/nginx.conf conf/nginx.conf
+            sudo docker rm -v $id
+
+
             export DB_ENGINE=${{ secrets.DB_ENGINE }}
             export DB_NAME=${{ secrets.DB_NAME }}
             export POSTGRES_USER=${{ secrets.POSTGRES_USER }}
@@ -91,8 +100,7 @@ jobs:
             sudo docker container prune -f
             sudo kill `sudo lsof -t -i:80`
             sudo kill `sudo lsof -t -i:8000`
-            sudo docker pull azeron/yamdb:latest
-            sudo docker-compose up --build
+            sudo docker-compose up -d --force-recreate
 
           # sudo docker stop $(sudo docker ps -a -q)
           # sudo docker rm $(sudo docker ps -a -q)
