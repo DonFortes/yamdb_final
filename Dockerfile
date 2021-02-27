@@ -4,6 +4,6 @@ WORKDIR /code
 
 COPY . /code
 
-RUN ["chmod", "+x", "code/entrypoint.sh"]
+# RUN ["chmod", "+x", "code/entrypoint.sh"]
 
 ENTRYPOINT ["code/entrypoint.sh"]
