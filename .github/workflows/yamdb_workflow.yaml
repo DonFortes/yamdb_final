@@ -57,11 +57,8 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
             id=$(sudo docker create ${{ secrets.DOCKER_USERNAME }}/yamdb:latest)
             sudo docker cp $id:code/docker-compose.yaml docker-compose.yaml
-            sudo docker cp $id:code/entrypoint.sh entrypoint.sh
-            sudo mkdir conf
-            sudo docker cp $id:code/conf/nginx.conf conf/nginx.conf
-            sudo chmod u+x entrypoint.sh
             sudo docker rm -v $id
+
             export DB_ENGINE=${{ secrets.DB_ENGINE }}
             export DB_NAME=${{ secrets.DB_NAME }}
             export POSTGRES_USER=${{ secrets.POSTGRES_USER }}
@@ -73,11 +70,11 @@ jobs:
             export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
             export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
             sudo touch .env
+
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
             sudo docker-compose up -d --force-recreate --build
             
-
   send_message:
     runs-on: ubuntu-latest
     needs: deploy

@@ -18,16 +18,17 @@ services:
 
   web:
     image: azeron/yamdb:latest
-    restart: always
     # command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
     depends_on:
       - db
+    restart: always
     env_file:
       - ./.env
     volumes:
       - static:/code/static
       - media:/code/media
       - nginx_conf:/code/conf/
+    entrypoint: /code/entrypoint.sh
 
   nginx:
     # build: static/
@@ -36,8 +37,8 @@ services:
       - static:/code/static
       - media:/code/media
       - nginx_conf:/etc/nginx/conf.d/
-    restart: always
     ports:
       - "8001:80"
     depends_on:
       - web
+    restart: always
