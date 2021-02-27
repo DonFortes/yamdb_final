@@ -4,6 +4,6 @@ WORKDIR /code
 
 COPY . /code
 
-RUN chmod u+x entrypoint.sh
+RUN sudo chmod u+x entrypoint.sh
 
-ENTRYPOINT ["code/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
