@@ -60,7 +60,7 @@ jobs:
             sudo docker cp $id:code/entrypoint.sh entrypoint.sh
             sudo mkdir conf
             sudo docker cp $id:code/conf/nginx.conf conf/nginx.conf
-            chmod u+x entrypoint.sh
+            sudo chmod u+x entrypoint.sh
             sudo docker rm -v $id
             export DB_ENGINE=${{ secrets.DB_ENGINE }}
             export DB_NAME=${{ secrets.DB_NAME }}
