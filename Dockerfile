@@ -4,4 +4,4 @@ WORKDIR /code
 
 COPY . .
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["code/entrypoint.sh"]
