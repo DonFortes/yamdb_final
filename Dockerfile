@@ -9,4 +9,4 @@ RUN python -m pip install --upgrade pip && \
 
 COPY . /code
 
-ENTRYPOINT sudo["/code/entrypoint.sh"]
+# ENTRYPOINT ["code/entrypoint.sh"]

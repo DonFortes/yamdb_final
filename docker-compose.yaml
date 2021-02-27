@@ -7,6 +7,7 @@ volumes:
   nginx_conf:
 
 services:
+
   db:
     image: postgres:12.4
     restart: always
@@ -14,6 +15,7 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
+
   web:
     image: azeron/yamdb:latest
     restart: always
@@ -26,6 +28,8 @@ services:
       - static:/code/static
       - media:/code/media
       - nginx_conf:/code/conf/
+    entrypoint: /code/entrypoint.sh
+
   nginx:
     # build: static/
     image: nginx:latest
