@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo python manage.py makemigrations
-sudo python manage.py migrate
-sudo python manage.py collectstatic  --noinput
+sudo python3 manage.py makemigrations
+sudo python3 manage.py migrate
+sudo python3 manage.py collectstatic  --noinput
 exec "$@"

@@ -12,4 +12,4 @@ RUN python -m pip install --upgrade pip && \
 
 COPY . /code
 
-ENTRYPOINT ["code/entrypoint.sh"]
+# ENTRYPOINT ["code/entrypoint.sh"]
