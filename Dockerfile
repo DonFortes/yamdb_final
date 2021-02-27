@@ -6,9 +6,9 @@ COPY requirements.txt /code
 
 RUN python -m pip install --upgrade pip && \
     pip install -r /code/requirements.txt && \
-    python manage.py makemigrations && \
-    python manage.py migrate && \
-    python manage.py collectstatic  --noinput        
+    python3 manage.py makemigrations && \
+    python3 manage.py migrate && \
+    python3 manage.py collectstatic  --noinput        
 
 COPY . /code
 
