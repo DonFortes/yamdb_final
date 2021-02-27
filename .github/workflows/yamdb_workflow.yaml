@@ -70,9 +70,9 @@ jobs:
             export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
             export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
             sudo touch .env
+            sudo docker container prune -f
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
-            sudo docker container prune -f
             sudo docker-compose up -d --force-recreate
 
           # sudo kill `sudo lsof -t -i:80`
