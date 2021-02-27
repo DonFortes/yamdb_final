@@ -4,8 +4,10 @@ WORKDIR /code
 
 COPY . .
 
-CMD pip install -r /code/requirements.txt
+RUN pip install -r /code/requirements.txt 
 
-ENTRYPOINT gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+CMD gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+
+# ENTRYPOINT gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
 
 # ["/code/entrypoint.sh"]
