@@ -5,11 +5,8 @@ WORKDIR /code
 COPY requirements.txt /code
 
 RUN python -m pip install --upgrade pip && \
-    pip install -r /code/requirements.txt && \
-    python3 manage.py makemigrations && \
-    python3 manage.py migrate && \
-    python3 manage.py collectstatic  --noinput        
+    pip install -r /code/requirements.txt      
 
 COPY . /code
 
-# ENTRYPOINT ["code/entrypoint.sh"]
+ENTRYPOINT ["code/entrypoint.sh"]
