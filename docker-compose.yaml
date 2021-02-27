@@ -28,7 +28,7 @@ services:
       - static:/code/static
       - media:/code/media
       - nginx_conf:/code/conf/
-    entrypoint: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+    entrypoint: /code/run.sh
 
   nginx:
     # build: static/

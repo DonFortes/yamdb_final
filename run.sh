@@ -1,9 +1,9 @@
-rm -f /app/pytest.ini
-rm -rf /app/tests
+#!/bin/sh
+python3 -m pip install --upgrade pip
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py collectstatic  --noinput
+gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
 
-cp pytest.ini /app/pytest.ini
-cp -a tests/ /app/tests
 
-cd /app
-pip3 install -r requirements.txt
-pytest --tb=line 1>&2
+exec "$@"
