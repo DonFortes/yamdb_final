@@ -28,7 +28,7 @@ services:
       - static:/code/static
       - media:/code/media
       - nginx_conf:/code/conf/
-    entrypoint: /code/entrypoint.sh
+    # entrypoint: /code/entrypoint.sh
 
   nginx:
     # build: static/
