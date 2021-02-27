@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 pip install -r /code/requirements.txt
 sudo python3 -m pip install --upgrade pip
 sudo python3 manage.py makemigrations
