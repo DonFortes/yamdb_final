@@ -28,6 +28,11 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+      - name: Change permissions
+        run: |
+          sudo chmod u+x entrypoint.sh
+          ls -la
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to Docker
@@ -70,8 +75,7 @@ jobs:
             export DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
             export DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
             sudo touch .env
-            ls -l
-            
+
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
             sudo docker-compose up -d --force-recreate --build
