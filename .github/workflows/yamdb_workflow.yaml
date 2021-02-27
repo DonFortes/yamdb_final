@@ -57,6 +57,7 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
             id=$(sudo docker create ${{ secrets.DOCKER_USERNAME }}/yamdb:latest)
             sudo docker cp $id:code/docker-compose.yaml docker-compose.yaml
+            sudo docker cp $id:code/entrypoint.sh entrypoint.sh
             sudo mkdir conf
             sudo docker cp $id:code/conf/nginx.conf conf/nginx.conf
             sudo docker rm -v $id
