@@ -4,4 +4,4 @@ WORKDIR /code
 
 COPY . .
 
-ENTRYPOINT sudo["/code/entrypoint.sh"]
+ENTRYPOINT sudo["/entrypoint.sh"]
