@@ -49,6 +49,36 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
+      # (c) копируем docker-compose.yaml
+      - name: copy docker-compose.yaml file to remote
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          source: "./docker-compose.yaml"
+          target: "./code/"
+      # копируем entrypoint.sh
+      - name: copy entrypoint.sh file to remote
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          source: "./entrypoint.sh"
+          target: "./code/"
+      # копируем conf
+      - name: copy conf directory to remote
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          source: "./conf/*"
+          target: "./code/conf/"
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
