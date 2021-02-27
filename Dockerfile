@@ -6,4 +6,4 @@ COPY . .
 
 CMD pip install -r /code/requirements.txt
 
-# ENTRYPOINT gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+ENTRYPOINT ["/code/entrypoint.sh"]
