@@ -2,8 +2,8 @@ FROM python:3.8.5
 
 WORKDIR /code
 
-COPY requirements.txt /code
+COPY . /code
 
 RUN ["chmod", "+x", "code/entrypoint.sh"]
 
-COPY . /code
+ENTRYPOINT ["code/entrypoint.sh"]
