@@ -18,7 +18,7 @@ services:
 
   web:
     image: azeron/yamdb:latest
-    # command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
     depends_on:
       - db
     restart: always
