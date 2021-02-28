@@ -51,16 +51,15 @@ jobs:
     needs: build_and_push_to_docker_hub
     if: github.ref == 'refs/heads/master'
     steps:
-      - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1
-      with:
-        envkey_DEBUG: false
-        envkey_SOME_API_KEY: "123456abcdef"
-        envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        some_other_variable: foobar
-        directory: <directory_name>
-        file_name: .env
-
+      # - name: Make envfile
+      # uses: SpicyPizza/create-envfile@v1
+      # with:
+      #   envkey_DEBUG: false
+      #   envkey_SOME_API_KEY: "123456abcdef"
+      #   envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      #   some_other_variable: foobar
+      #   directory: <directory_name>
+      #   file_name: .env
       - name: ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
