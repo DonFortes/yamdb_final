@@ -15,10 +15,6 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
-    environment:           # add line.
-       - POSTGRES_DB=postgres
-       - POSTGRES_USER=postgres
-       - POSTGRES_PASSWORD=postgres
 
   web:
     image: azeron/yamdb:latest
@@ -33,12 +29,6 @@ services:
       - media:/code/media
       - nginx_conf:/code/conf/
     entrypoint: /code/entrypoint.sh
-    environment:           # add line.
-       - DB_NAME=postgres
-       - POSTGRES_USER=postgres
-       - POSTGRES_PASSWORD=postgres
-       - DB_HOST=db
-       - DB_PORT=5432
 
   nginx:
     image: nginx:latest
