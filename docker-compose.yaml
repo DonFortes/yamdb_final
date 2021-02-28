@@ -15,7 +15,8 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
-
+    environment:
+      - POSTGRES_PASSWORD=postgres
   web:
     image: azeron/yamdb:latest
     command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000

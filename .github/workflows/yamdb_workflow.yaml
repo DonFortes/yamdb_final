@@ -66,16 +66,17 @@ jobs:
             sudo docker cp $id:code/docker-compose.yaml docker-compose.yaml
             sudo docker rm -v $id
             
-            echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
-            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-            echo DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }} >> .env
-            echo DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }} >> .env
-            echo DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }} >> .env
+            touch .env
+            echo DB_ENGINE=${{ secrets.DB_ENGINE }}
+            echo DB_NAME=${{ secrets.DB_NAME }}
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+            echo DB_HOST=${{ secrets.DB_HOST }}
+            echo DB_PORT=${{ secrets.DB_PORT }}
+            echo SECRET_KEY=${{ secrets.SECRET_KEY }}
+            echo DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }
+            echo DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }}
+            echo DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }}
 
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)

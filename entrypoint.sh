@@ -1,7 +1,6 @@
 #!/bin/sh
 
-sleep 10
-
+sleep 5
 
 python3 -m pip install --upgrade pip
 python3 manage.py makemigrations
