@@ -27,15 +27,15 @@ docker-compose exec web python manage.py loaddata fixtures.json
 
 
 Access to the admin panel
-http://localhost:8000/admin
+http://localhost:8001/admin
 
 
 List of works
-http://localhost:8000/api/v1/titles/
+http://localhost:8001/api/v1/titles/
 
 
 API documentation is available at
-http://localhost:8000/
+http://localhost:8001/
 
 
 https://github.com/DonFortes/yamdb_final/workflows/yamdb_workflow/badge.svg

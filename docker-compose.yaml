@@ -31,7 +31,6 @@ services:
     entrypoint: /code/entrypoint.sh
 
   nginx:
-    # build: static/
     image: nginx:latest
     volumes:
       - static:/code/static
