@@ -58,7 +58,7 @@ jobs:
       #   envkey_SOME_API_KEY: "123456abcdef"
       #   envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
       #   some_other_variable: foobar
-      #   directory: <directory_name>
+      #   directory: <directory_name>>
       #   file_name: .env
       - name: ssh commands to deploy
         uses: appleboy/ssh-action@master
@@ -78,16 +78,16 @@ jobs:
             rm .env
             touch .env
             sudo chown azeron:azeron .env
-            echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
-            echo DB_NAME=${{ secrets.DB_NAME }} > .env
-            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} > .env
-            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} > .env
-            echo DB_HOST=${{ secrets.DB_HOST }} > .env
-            echo DB_PORT=${{ secrets.DB_PORT }} > .env
-            echo SECRET_KEY=${{ secrets.SECRET_KEY }} > .env
-            echo DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }} > .env
-            echo DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }} > .env
-            echo DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }} > .env
+            echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
+            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+            echo DJANGO_SUPERUSER_PASSWORD=${{ secrets.DJANGO_SUPERUSER_PASSWORD }} >> .env
+            echo DJANGO_SUPERUSER_EMAIL=${{ secrets.DJANGO_SUPERUSER_EMAIL }} >> .env
+            echo DJANGO_SUPERUSER_USERNAME=${{ secrets.DJANGO_SUPERUSER_USERNAME }} >> .env
 
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker rm $(sudo docker ps -a -q)
