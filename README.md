@@ -25,17 +25,22 @@ docker-compose exec web python manage.py collectstatic --noinput
 5. Filling the database with initial data
 docker-compose exec web python manage.py loaddata fixtures.json 
 
-
-Access to the admin panel
-http://localhost:8001/admin
-
-
-List of works
-http://localhost:8001/api/v1/titles/
-
+See this project on internet
 
 API documentation is available at
-http://localhost:8001/
+http://178.154.253.131:8001/
+
+Access to the admin panel
+http://178.154.253.131:8001/admin
+
+List of categories
+http://178.154.253.131:8001/api/v1/categories/
+List of genres
+http://178.154.253.131/api/v1/genres/
+List of titles
+http://178.154.253.131:8001/api/v1/titles/
+Users
+http://178.154.253.131:8001/api/v1/users/
 
 
 https://github.com/DonFortes/yamdb_final/workflows/yamdb_workflow/badge.svg
