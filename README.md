@@ -36,7 +36,7 @@ http://178.154.253.131:8001/admin
 List of categories
 http://178.154.253.131:8001/api/v1/categories/
 List of genres
-http://178.154.253.131/api/v1/genres/
+http://178.154.253.131:8001/api/v1/genres/
 List of titles
 http://178.154.253.131:8001/api/v1/titles/
 Users
