@@ -1,6 +1,6 @@
+# YaMDb
 
-
-# Project Title
+![library-488669_1920](https://user-images.githubusercontent.com/53881876/131909533-42fd7667-b496-4f62-a847-ac72fa9578e8.jpg)
 
 The YaMDb project collects user reviews of works (Title). The works are divided into categories: "Books", "Movies", "Music". In each category there are works: books, movies or music. Grateful or outraged readers leave text reviews for the works and give the work a rating (rating in the range from one to ten). From the set of ratings, the average score of the product is automatically calculated.
 
